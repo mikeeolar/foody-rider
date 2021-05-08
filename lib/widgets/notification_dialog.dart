@@ -212,7 +212,7 @@ class NotificationDialog extends StatelessWidget {
       if (awaitSnap.value != null) {
         orderId = awaitSnap.value.toString();
       } else {
-        print('Order not found');
+        print('No order Found');
       }
 
       if (orderId == 'waiting') {
