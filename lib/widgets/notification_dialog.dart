@@ -160,11 +160,13 @@ class NotificationDialog extends StatelessWidget {
       ),
     );
 
-    DatabaseReference newRideRef =
-        FirebaseDatabase.instance.reference().child('riders/${currentFirebaseUser.uid}/neworder');
+    DatabaseReference newRideRef = FirebaseDatabase.instance
+        .reference()
+        .child('riders/${currentFirebaseUser.uid}/neworder');
 
-    DatabaseReference awaitRef =
-    FirebaseDatabase.instance.reference().child('awaitingRequest/${orderDetails.orderId}/neworder');
+    DatabaseReference awaitRef = FirebaseDatabase.instance
+        .reference()
+        .child('awaitingRequest/${orderDetails.orderId}/neworder');
     final awaitSnap = await awaitRef.once();
 
     // DatabaseReference newOrderRef =
@@ -233,7 +235,8 @@ class NotificationDialog extends StatelessWidget {
         Toast.show('Order has timed out', context,
             duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       } else {
-        Toast.show('Order not found', context, duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+        Toast.show('Order not found', context,
+            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       }
     });
   }

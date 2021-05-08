@@ -21,9 +21,7 @@ class PushNotificationService {
   //   fetchOrderInfo(getOrderId(message));
   // }
 
-
   Future initialize(context) async {
-
     FirebaseMessaging.onMessage.listen((RemoteMessage remoteMessage) {
       Map<String, dynamic> message = remoteMessage.data;
       print('From onMessage');
@@ -66,7 +64,7 @@ class PushNotificationService {
 
   void fetchOrderInfo(String orderId, context) {
     showDialog(
-      context: context,
+        context: context,
         barrierDismissible: false,
         builder: (BuildContext context) => ProgressDialog(
               status: 'Fetching details...',
@@ -93,7 +91,8 @@ class PushNotificationService {
         String address = snapshot.value['address'].toString();
         String fullName = snapshot.value['rider_name'].toString();
         String phoneNumber = snapshot.value['rider_phone'].toString();
-        double deliveryFee = double.parse(snapshot.value['riderFee'].toString());
+        double deliveryFee =
+            double.parse(snapshot.value['riderFee'].toString());
         String paymentMethod = snapshot.value['payment_method'];
 
         OrderDetails orderDetails = OrderDetails();
@@ -107,9 +106,11 @@ class PushNotificationService {
         orderDetails.pickup = LatLng(yabaLat, yabaLng);
 
         showDialog(
-          context: context,
+            context: context,
             barrierDismissible: false,
-            builder: (BuildContext context) => NotificationDialog(orderDetails: orderDetails,));
+            builder: (BuildContext context) => NotificationDialog(
+                  orderDetails: orderDetails,
+                ));
       }
     });
   }
